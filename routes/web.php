@@ -37,10 +37,15 @@ Route::get('/', function () {
     /* $cat = Category::find(1)->products;
             return $cat;*/
 
-    return view('tienda.index');
+  //  return view('tienda.index');
 });
 
 
+Route::get('/admin', function () {
+    return view('admin.category.create');
+});
+
+Route::apiResource('category', 'API\CategoryController');
 
 Auth::routes();
 

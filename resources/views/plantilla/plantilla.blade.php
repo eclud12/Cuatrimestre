@@ -5,7 +5,7 @@
 	<title>@yield('titulo')</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="description" content="Jhonatan Shop template">
+	<meta name="description" content="TecnoSoportSDA template">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- CSRF Token -->
@@ -84,7 +84,7 @@
 						<a href="#">
 							<div class="d-flex flex-row align-items-center justify-content-start">
 								<div><img src="http://127.0.0.1:8000/asset/images/logo_1.png" alt=""></div>
-								<div>Jhonatan Shop</div>
+								<div>TecnoSoportSDA</div>
 							</div>
 						</a>
 					</div>
@@ -122,7 +122,7 @@
 				</div>
 			</header>
 
-
+          <!-----Los productos se encuentras dentro de la carpeta tienda/index.blade------> 
 			@yield('contenido')
 			<!-- Footer -->
 
@@ -141,7 +141,7 @@
 										<a href="#">
 											<div class="d-flex flex-row align-items-center justify-content-start">
 												<div class="footer_logo_icon"><img src="http://127.0.0.1:8000/asset/images/logo_2.png" alt=""></div>
-												<div>Jhonatan Shop</div>
+												<div>TecnoSoportSDA</div>
 											</div>
 										</a>
 									</div>
