@@ -31,3 +31,4 @@
      el: '#app',
  });
  
+ require('./apicategory');
