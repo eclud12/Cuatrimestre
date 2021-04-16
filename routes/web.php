@@ -44,7 +44,8 @@ Route::get('/admin', function () {
     return view('plantilla.admin');
 });
 
-Route::resource('admin/category', 'Admin\AdminController')->names('admin.category');
+/*Route::resource('admin/category', 'Admin\AdminController')->names('admin.category');*/
+Route::resource('admin/category', 'Admin\AdminCategoryController')->names('admin.category'); 
 
 /*Route::get('/admin', function () {
     return view('admin.category.create');//para llamar a categorias creadas o crear
