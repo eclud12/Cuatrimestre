@@ -9,29 +9,29 @@
 @endsection
 
 @section('estilos')
-  <!-- Select2 -->
- <link rel="stylesheet" href="/adminlte/plugins/select2/css/select2.min.css">
- <link rel="stylesheet" href="/adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+<!-- Select2 -->
+<link rel="stylesheet" href="/adminlte/plugins/select2/css/select2.min.css">
+<link rel="stylesheet" href="/adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
 
 @endsection
 
 @section('scripts')
 
- <!-- Select2 -->
+<!-- Select2 -->
 <script src="/adminlte/plugins/select2/js/select2.full.min.js"></script>
 
 <script src="/adminlte/ckeditor/ckeditor.js"></script>
 
 <script>
-  $(function () {
-    //Initialize Select2 Elements
-    $('#category_id').select2()
-    //Initialize Select2 Elements
-    $('.select2bs4').select2({
-      theme: 'bootstrap4'
+    $(function() {
+        //Initialize Select2 Elements
+        $('#category_id').select2()
+        //Initialize Select2 Elements
+        $('.select2bs4').select2({
+            theme: 'bootstrap4'
+        });
     });
-  });
-</script> 
+</script>
 
 @endsection
 
@@ -405,8 +405,16 @@
                                 <div class="form-group">
 
                                     <label>Estado</label>
-                                    <input class="form-control" type="text" id="estado" name="estado" value="Nuevo">
+                                    <select name="estado" id="estado" class="form-control " style="width: 100%;">
+                                        @foreach($estados_productos as $estado)
 
+                                        @if ($estado == 'Nuevo')
+                                        <option value="{{ $estado }}" selected="selected">{{ $estado }}</option>
+                                        @else
+                                        <option value="{{ $estado }}">{{ $estado }}</option>
+                                        @endif
+                                        @endforeach
+                                    </select>
 
                                 </div>
                                 <!-- /.form-group -->
