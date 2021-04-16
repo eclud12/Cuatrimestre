@@ -328,7 +328,7 @@
 
                 <div class="card card-warning">
                     <div class="card-header">
-                        <h3 class="card-title">Imagenes</h3>
+                        <h3 class="card-title">Imágenes</h3>
 
 
                     </div>
@@ -337,9 +337,18 @@
 
                         <div class="form-group">
 
-                            <label for="archivosimagenes">Subir varias imagenes</label>
+                            <label for="imagenes">Añadir imágenes</label>
 
-                            <input type="file" class="form-control-file" id="archivosimagenes[]" multiple accept="image/*">
+
+                            <input type="file" class="form-control-file" name="imagenes[]" id="imagenes[]" multiple accept="image/*">
+                            <div class="description">
+                                Un número ilimitado de archivos pueden ser cargados en este campo.
+                                <br>
+                                Límite de 2048 MB por imagen.
+                                <br>
+                                Tipos permitidos: jpeg, png, jpg, gif, svg.
+                                <br>
+                            </div>
                         </div>
 
 
@@ -444,5 +453,5 @@
 
 
     </form>
- </div>
-    @endsection
+</div>
+@endsection

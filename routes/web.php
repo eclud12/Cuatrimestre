@@ -8,11 +8,13 @@ use App\Image;
 //para hacer las pruebas con las imagenes.
 Route::get('/prueba', function () {
 
-    //20 eliminar todas las imagenes
+    $product = App\Product::find(5);
 
-    $product = App\Product::find(2);
-    $product->images()->delete();
-    return $product;
+    return $product->images;
+
+    //  $product = App\Product::find(2);
+    //  $product->images()->delete();
+    //  return $product;
 
 
 });
@@ -20,8 +22,8 @@ Route::get('/prueba', function () {
 //mostrar resultados
 Route::get('/resultados', function () {
 
-   $image = App\Image::orderBy('id','Desc')->get();
-   return  $image; 
+    $image = App\Image::orderBy('id', 'Desc')->get();
+    return  $image;
 });
 
 
@@ -30,12 +32,12 @@ Route::get('/', function () {
 
 
 
-/*$prod= Product::findOrFail(2);
+    /*$prod= Product::findOrFail(2);
 $prod->slug= 'producto-3';
 $prod->save();
 return $prod;
 */
-/*
+    /*
     $prod = new Product();
     $prod->nombre = 'isopos';
     $prod->slug = 'isopos';
@@ -54,10 +56,10 @@ return $prod;
     //return view('welcome');
 
 
-   /* $cat = Category::find(1)->products;
+    /* $cat = Category::find(1)->products;
             return $cat;*/
 
-  
+
     return view('tienda.index');
 });
 
@@ -75,9 +77,9 @@ Route::resource('admin/category', 'Admin\AdminCategoryController')->names('admin
 
 Route::resource('admin/product', 'Admin\AdminProductController')->names('admin.product');
 
-Route::get('cancelar/{ruta}', function($ruta) {
-    return redirect()->route($ruta)->with('cancelar','Acción Cancelada!');
-   /// return redirect()->route('admin.category.index')->with('cancelar','Acción Cancelada!');
+Route::get('cancelar/{ruta}', function ($ruta) {
+    return redirect()->route($ruta)->with('cancelar', 'Acción Cancelada!');
+    /// return redirect()->route('admin.category.index')->with('cancelar','Acción Cancelada!');
 })->name('cancelar'); 
 //Route::get('/admin', function () {
 //    return view('admin.category.create');//para llamar a categorias creadas o crear
