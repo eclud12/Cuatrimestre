@@ -13,17 +13,17 @@ use App\Category;
 |
 */
 
-/*Route::get('/', function () {
+Route::get('/', function () {
 
-
-    /*$prod = new Product();
-    $prod->nombre = 'Producto 3';
-    $prod->slug = 'Producto 3';
+/*
+    $prod = new Product();
+    $prod->nombre = 'isopos';
+    $prod->slug = 'isopos';
     $prod->category_id = 3;
-    $prod->descripcion_corta = 'Producto ';
-    $prod->descripcion_larga = 'Producto ';
-    $prod->especificaciones = 'Producto ';
-    $prod->datos_de_interes = 'Producto ';
+    $prod->descripcion_corta = 'isopos';
+    $prod->descripcion_larga = 'isopos';
+    $prod->especificaciones = 'isopos';
+    $prod->datos_de_interes = 'isopos';
     $prod->estado = 'Nuevo';
     $prod->activo = 'Si';
     $prod->sliderprincipal = 'No'; 
@@ -34,11 +34,11 @@ use App\Category;
     //return view('welcome');
 
 
-    /* $cat = Category::find(1)->products;
+   /* $cat = Category::find(1)->products;
             return $cat;*/
 
   //  return view('tienda.index');
-//});
+});
 
 Route::get('/admin', function () {
     return view('plantilla.admin');
@@ -51,7 +51,8 @@ Route::resource('admin/category', 'Admin\AdminController')->names('admin.categor
 });
 
 Route::apiResource('category', 'API\CategoryController');
-*/
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+*/
