@@ -5,22 +5,24 @@
 @section('contenido')
 
 <div id="apicategory">
+    <form action="{{ route('admin.category.store') }}" method="POST">
+        @csrf
 
-    <!-- Default box -->
-    <div class="card">
-        <div class="card-header">
-            <h3 class="card-title">Administración de Categorias</h3>
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Administración de Categorias</h3>
 
-            <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-                    <i class="fas fa-minus"></i></button>
-                <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
-                    <i class="fas fa-times"></i></button>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                        <i class="fas fa-minus"></i></button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+                        <i class="fas fa-times"></i></button>
+                </div>
             </div>
-        </div>
-        <div class="card-body">
+            <div class="card-body">
 
-            <form action="">
+
 
                 <div class="form-group">
                     <label for="nombre">Nombre</label>
@@ -36,18 +38,18 @@
 
                 </div>
 
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+
+                <input :disabled="deshabilitar_boton==1" type="submit" value="Guardar" class="btn btn-primary float-right">
+
+
+
+            </div>
+            <!-- /.card-footer-->
         </div>
-        <!-- /.card-body -->
-        <div class="card-footer">
-
-            <input :disabled="deshabilitar_boton==1" type="submit" value="Guardar" class="btn btn-primary float-right">
-
-            </form>
-
-        </div>
-        <!-- /.card-footer-->
-    </div>
-    <!-- /.card -->
-
-<div>
- @endsection
+        <!-- /.card -->
+    </form>
+    <div>
+        @endsection

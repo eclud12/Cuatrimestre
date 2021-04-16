@@ -13,7 +13,7 @@ use App\Category;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
 
 
     /*$prod = new Product();
@@ -38,15 +38,20 @@ Route::get('/', function () {
             return $cat;*/
 
   //  return view('tienda.index');
-});
-
+//});
 
 Route::get('/admin', function () {
-    return view('admin.category.create');
+    return view('plantilla.admin');
+});
+
+Route::resource('admin/category', 'Admin\AdminController')->names('admin.category');
+
+/*Route::get('/admin', function () {
+    return view('admin.category.create');//para llamar a categorias creadas o crear
 });
 
 Route::apiResource('category', 'API\CategoryController');
-
+*/
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
