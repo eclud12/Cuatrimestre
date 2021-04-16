@@ -4,7 +4,7 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
- require('./bootstrap');
+ /*require('./bootstrap');
 
  window.Vue = require('vue');
  
@@ -28,7 +28,7 @@
   */
  
 
- if (document.getElementById('app')) {
+ /*if (document.getElementById('app')) {
     const app = new Vue({
         el: '#app',
     });
@@ -41,5 +41,9 @@ if (document.getElementById('apicategory')) {
 
 if (document.getElementById('confirmareliminar')) {
     require('./confirmareliminar');
-}
+}*/
+
+require('./tienda/bootstrap');
+
+require('./comun');
  //require('./apicategory');
