@@ -8,9 +8,11 @@ use App\Image;
 //para hacer las pruebas con las imagenes.
 Route::get('/prueba', function () {
 
-  $product = App\Product::find(5);
 
-    return $product->images;
+    $product = App\Product::with('images','category')->orderby('id','desc')->get();
+    return $product;
+  //$product = App\Product::find(5);
+//  return $product->images;
 
     //  $product = App\Product::find(2);
     //  $product->images();

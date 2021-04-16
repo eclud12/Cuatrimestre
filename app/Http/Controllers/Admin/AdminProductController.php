@@ -18,7 +18,7 @@ class AdminProductController extends Controller
     {
         $nombre = $request->get('nombre');
 
-        $productos = Product::with('images','category')->where('nombre','like',"%$nombre%")->orderBy('nombre')->paginate(2);
+        $productos = Product::with('images', 'category')->where('nombre', 'like', "%$nombre%")->orderBy('nombre')->paginate(2);
         return view('admin.product.index', compact('productos'));
     }
 
@@ -134,9 +134,14 @@ class AdminProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
         //
+        $producto = Product::with('images', 'category')->where('slug', $slug)->firstOrFail();
+
+        $categorias = Category::orderBy('nombre')->get();
+
+        return view('admin.product.edit', compact('producto', 'categorias'));
     }
 
     /**
