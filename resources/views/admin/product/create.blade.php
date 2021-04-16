@@ -177,7 +177,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">$</span>
                                         </div>
-                                        <input class="form-control" type="number" id="precioanterior" name="precioanterior" min="0" value="0" step=".01">
+                                        <input v-model="precioanterior" class="form-control" type="number" id="precioanterior" name="precioanterior" min="0" value="0" step=".01">
                                     </div>
 
                                 </div>
@@ -196,11 +196,15 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">$</span>
                                         </div>
-                                        <input class="form-control" type="number" id="precioactual" name="precioactual" min="0" value="0" step=".01">
+                                        <input v-model="precioactual" class="form-control" type="number" id="precioactual" name="precioactual" min="0" value="0" step=".01">
                                     </div>
 
                                     <br>
-                                    <span id="descuento"></span>
+                                    <span id="descuento">
+
+                                        @{{ generardescuento }}
+
+                                    </span>
                                 </div>
                                 <!-- /.form-group -->
 
@@ -215,7 +219,7 @@
 
                                     <label>Porcentaje de descuento</label>
                                     <div class="input-group">
-                                        <input class="form-control" type="number" id="porcentajededescuento" name="porcentajededescuento" step="any" min="0" min="100" value="0">
+                                        <input v-model="porcentajededescuento" class="form-control" type="number" id="porcentajededescuento" name="porcentajededescuento" step="any" min="0" max="100" value="0">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">%</span>
                                         </div>
@@ -224,7 +228,7 @@
 
                                     <br>
                                     <div class="progress">
-                                        <div id="barraprogreso" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                                        <div id="barraprogreso" class="progress-bar" role="progressbar" v-bind:style="{width: porcentajededescuento+'%'}" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">@{{ porcentajededescuento }}%</div>
                                     </div>
                                 </div>
                                 <!-- /.form-group -->
