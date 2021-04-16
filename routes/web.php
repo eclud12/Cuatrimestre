@@ -37,29 +37,31 @@ Route::get('/', function () {
    /* $cat = Category::find(1)->products;
             return $cat;*/
 
-  //  return view('tienda.index');
+  
+    return view('tienda.index');
 });
+
+Auth::routes();
+
+
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/admin', function () {
     return view('plantilla.admin');
 })->name('admin');
 
-//Route::resource('admin/category', 'Admin\AdminController')->names('admin.category');
-//Route::resource('admin/category', 'Admin\AdminCategoryController')->names('admin.category'); 
 
 Route::resource('admin/category', 'Admin\AdminCategoryController')->names('admin.category');
 
 
 Route::get('cancelar/{ruta}', function($ruta) {
-    return redirect()->route('admin.category.index')->with('cancelar','Acción Cancelada!');
+    return redirect()->route($ruta)->with('cancelar','Acción Cancelada!');
+   /// return redirect()->route('admin.category.index')->with('cancelar','Acción Cancelada!');
 })->name('cancelar'); 
-/*Route::get('/admin', function () {
-    return view('admin.category.create');//para llamar a categorias creadas o crear
-});
+//Route::get('/admin', function () {
+//    return view('admin.category.create');//para llamar a categorias creadas o crear
+//});
 
-Route::apiResource('category', 'API\CategoryController');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-*/
+//Route::apiResource('category', 'API\CategoryController');
+//Route::resource('admin/category', 'Admin\AdminController')->names('admin.category');
+//Route::resource('admin/category', 'Admin\AdminCategoryController')->names('admin.category'); 
