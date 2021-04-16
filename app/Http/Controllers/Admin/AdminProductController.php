@@ -32,7 +32,7 @@ class AdminProductController extends Controller
         //
         $estados_productos = $this->estados_productos();
         $categorias = Category::orderBy('nombre')->get();
-        return view('admin.product.create',compact('categorias','estados_productos'));
+        return view('admin.product.create', compact('categorias', 'estados_productos'));
     }
 
     /**
@@ -124,10 +124,18 @@ class AdminProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
         //
-        
+        $producto = Product::with('images', 'category')->where('slug', $slug)->firstOrFail();
+
+        $categorias = Category::orderBy('nombre')->get();
+
+        $estados_productos = $this->estados_productos();
+
+        //dd($estados_productos);
+
+        return view('admin.product.show', compact('producto', 'categorias', 'estados_productos'));
     }
 
     /**
@@ -144,7 +152,7 @@ class AdminProductController extends Controller
         $categorias = Category::orderBy('nombre')->get();
         $estados_productos = $this->estados_productos();
 
-        return view('admin.product.edit',compact('producto','categorias','estados_productos'));
+        return view('admin.product.edit', compact('producto', 'categorias', 'estados_productos'));
     }
 
     /**
@@ -158,8 +166,8 @@ class AdminProductController extends Controller
     {
         //
         $request->validate([
-            'nombre' => 'required|unique:products,nombre,'.$id,
-            'slug' => 'required|unique:products,slug,'.$id,
+            'nombre' => 'required|unique:products,nombre,' . $id,
+            'slug' => 'required|unique:products,slug,' . $id,
             'imagenes.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
 
         ]);
@@ -174,15 +182,13 @@ class AdminProductController extends Controller
 
             foreach ($imagenes as $imagen) {
 
-                $nombre = time().'_'.$imagen->getClientOriginalName();
+                $nombre = time() . '_' . $imagen->getClientOriginalName();
 
-                $ruta = public_path().'/imagenes';
+                $ruta = public_path() . '/imagenes';
 
-                $imagen->move($ruta , $nombre);
+                $imagen->move($ruta, $nombre);
 
-                $urlimagenes[]['url'] = '/imagenes/'.$nombre;
-
-
+                $urlimagenes[]['url'] = '/imagenes/' . $nombre;
             }
 
             //return $urlimagenes;
@@ -193,34 +199,32 @@ class AdminProductController extends Controller
 
         $prod = Product::findOrFail($id);
 
-        $prod->nombre=                  $request->nombre;
-        $prod->slug=                    $request->slug;
-        $prod->category_id=             $request->category_id;
-        $prod->cantidad=                $request->cantidad;
-        $prod->precio_anterior=         $request->precioanterior;
-        $prod->precio_actual=           $request->precioactual;
-        $prod->porcentaje_descuento=    $request->porcentajededescuento;
-        $prod->descripcion_corta=       $request->descripcion_corta;
-        $prod->descripcion_larga=       $request->descripcion_larga;
-        $prod->especificaciones=        $request->especificaciones;
-        $prod->datos_de_interes=        $request->datos_de_interes;
-        $prod->estado=                  $request->estado;
+        $prod->nombre =                  $request->nombre;
+        $prod->slug =                    $request->slug;
+        $prod->category_id =             $request->category_id;
+        $prod->cantidad =                $request->cantidad;
+        $prod->precio_anterior =         $request->precioanterior;
+        $prod->precio_actual =           $request->precioactual;
+        $prod->porcentaje_descuento =    $request->porcentajededescuento;
+        $prod->descripcion_corta =       $request->descripcion_corta;
+        $prod->descripcion_larga =       $request->descripcion_larga;
+        $prod->especificaciones =        $request->especificaciones;
+        $prod->datos_de_interes =        $request->datos_de_interes;
+        $prod->estado =                  $request->estado;
 
 
         if ($request->activo) {
-            $prod->activo= 'Si';    
-        }
-        else {
-            $prod->activo= 'No';    
+            $prod->activo = 'Si';
+        } else {
+            $prod->activo = 'No';
         }
 
 
 
         if ($request->sliderprincipal) {
-            $prod->sliderprincipal= 'Si';    
-        }
-        else {
-            $prod->sliderprincipal= 'No';    
+            $prod->sliderprincipal = 'Si';
+        } else {
+            $prod->sliderprincipal = 'No';
         }
 
 
@@ -231,7 +235,7 @@ class AdminProductController extends Controller
 
         //return $prod->images;
 
-        return redirect()->route('admin.product.edit',$prod->slug)->with('datos','Registro actualizado correctamente!');
+        return redirect()->route('admin.product.edit', $prod->slug)->with('datos', 'Registro actualizado correctamente!');
 
 
 
@@ -248,7 +252,8 @@ class AdminProductController extends Controller
     {
         //
     }
-    public function estados_productos(){
+    public function estados_productos()
+    {
 
 
         return [
