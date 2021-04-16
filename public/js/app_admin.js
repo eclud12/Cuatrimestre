@@ -14646,13 +14646,10 @@ var apicategory = new Vue({
     }
   },
   mounted: function mounted() {
-    if (data.editar == 'Si') {
-      this.nombre = data.datos.nombre;
-      this.precioanterior = data.datos.precioanterior;
-      this.porcentajededescuento = data.datos.porcentajededescuento;
+    if (document.getElementById('editar')) {
+      this.nombre = document.getElementById('nombretemp').innerHTML;
       this.deshabilitar_boton = 0;
     }
-    console.log(data);
   }
 });
 
@@ -14748,6 +14745,31 @@ var apiproduct = new Vue({
     }
   },
   methods: {
+    eliminarimagen: function eliminarimagen(imagen) {
+      //console.log(imagen);
+      Swal.fire({
+        title: '¿Estas seguro de eliminar la imagen ' + imagen.id + '?',
+        text: "¡No podrás revertir esto!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: '¡Si, Eliminar!',
+        cancelButtonText: 'Cancelar'
+      }).then(function (result) {
+        if (result.value) {
+          var url = '/api/eliminarimagen/' + imagen.id;
+          axios["delete"](url).then(function (response) {
+            console.log(response.data);
+          }); //eliminar el elemento
+
+          var elemento = document.getElementById('idimagen-' + imagen.id); //console.log(elemento);
+
+          elemento.parentNode.removeChild(elemento);
+          Swal.fire('¡Eliminado!', 'Su archivo ha sido eliminado.', 'success');
+        }
+      });
+    },
     getProduct: function getProduct() {
       var _this = this;
 
@@ -14775,10 +14797,14 @@ var apiproduct = new Vue({
     }
   },
   mounted: function mounted() {
-    if (document.getElementById('editar')) {
-      this.nombre = document.getElementById('nombretemp').innerHTML;
+    if (data.editar == 'Si') {
+      this.nombre = data.datos.nombre;
+      this.precioanterior = data.datos.precioanterior;
+      this.porcentajededescuento = data.datos.porcentajededescuento;
       this.deshabilitar_boton = 0;
     }
+
+    console.log(data);
   }
 });
 
