@@ -8,12 +8,12 @@ use App\Image;
 //para hacer las pruebas con las imagenes.
 Route::get('/prueba', function () {
 
-    $product = App\Product::find(5);
+  $product = App\Product::find(5);
 
     return $product->images;
 
     //  $product = App\Product::find(2);
-    //  $product->images()->delete();
+    //  $product->images();
     //  return $product;
 
 
