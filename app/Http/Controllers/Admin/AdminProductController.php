@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Product;
+use App\Category;
 
 class AdminProductController extends Controller
 {
@@ -17,8 +18,8 @@ class AdminProductController extends Controller
     {
         $nombre = $request->get('nombre');
 
-        $productos = Product::where('nombre','like',"%$nombre%")->orderBy('nombre')->paginate(2);
-        return view('admin.product.index',compact('productos'));
+        $productos = Product::where('nombre', 'like', "%$nombre%")->orderBy('nombre')->paginate(2);
+        return view('admin.product.index', compact('productos'));
     }
 
     /**
@@ -29,6 +30,8 @@ class AdminProductController extends Controller
     public function create()
     {
         //
+        $categorias = Category::orderBy('nombre')->get();
+        return view('admin.product.create', compact('categorias'));
     }
 
     /**
