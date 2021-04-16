@@ -40,6 +40,7 @@
                         @{{ div_mensajeslug }}
                     </div>
                     <br v-if="div_aparecer">
+                    
                     <label for="descripcion">Descripción</label>
                     <textarea class="form-control" name="descripcion" id="descripcion" cols="30" rows="5"></textarea>
 
