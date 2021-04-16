@@ -17,7 +17,7 @@ class AdminCategoryController extends Controller
     {
         //
         $categorias = Category::orderBy('nombre')->paginate(2);
-        return view('admin.category.index',compact('categorias'));
+        return view('admin.category.index', compact('categorias'));
     }
 
     /**
@@ -38,7 +38,7 @@ class AdminCategoryController extends Controller
      */
     public function store(Request $request)
     {
-         /*$cat = new Category();
+        /*$cat = new Category();
         $cat->nombre        = $request->nombre;
         $cat->slug          = $request->slug;
         $cat->descripcion   = $request->descripcion;
@@ -47,7 +47,10 @@ class AdminCategoryController extends Controller
         return $cat;
         */
 
-        return Category::create($request->all());
+        //return Category::create($request->all());
+        Category::create($request->all());
+
+        return redirect()->route('admin.category.index')->with('datos', 'Registro creado correctamente!');
     }
 
     /**
@@ -69,10 +72,10 @@ class AdminCategoryController extends Controller
      */
     public function edit($slug)
     {
-        $cat= Category::where('slug',$slug)->firstOrFail();
+        $cat = Category::where('slug', $slug)->firstOrFail();
         $editar = 'Si';
 
-        return view('admin.category.edit',compact('cat','editar'));
+        return view('admin.category.edit', compact('cat', 'editar'));
     }
 
     /**
@@ -84,7 +87,7 @@ class AdminCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $cat= Category::findOrFail($id);
+        $cat = Category::findOrFail($id);
         /*$cat->nombre        = $request->nombre;
         $cat->slug          = $request->slug;
         $cat->descripcion   = $request->descripcion;
@@ -94,7 +97,8 @@ class AdminCategoryController extends Controller
         */
         $cat->fill($request->all())->save();
 
-        return $cat; 
+        //return $cat; 
+        return redirect()->route('admin.category.index')->with('datos', 'Registro actualizado correctamente!');
     }
 
     /**
