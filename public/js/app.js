@@ -49783,44 +49783,7 @@ module.exports = function(module) {
 	}
 	return module;
 };
-/***/ }),
 
-/***/ "./resources/js/admin/api_search_autocomplete.js":
-/*!*******************************************************!*\
-  !*** ./resources/js/admin/api_search_autocomplete.js ***!
-  \*******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-  var api_search_autocomplete = new Vue({
-    el: '#api_search_autocomplete',
-    data: {
-      palabra_a_buscar: '',
-      resultados: []
-    },
-    methods: {
-      autoComplete: function autoComplete() {
-        var _this = this;
-  
-        this.resultados = [];
-  
-        if (this.palabra_a_buscar.length > 2) {
-          axios.get('/api/autocomplete', {
-            params: {
-              palabraabuscar: this.palabra_a_buscar
-            }
-          }).then(function (response) {
-            _this.resultados = response.data;
-            console.log(response.data);
-          });
-        }
-      }
-    },
-    mounted: function mounted() {
-      console.log('Datos cargados correctamente');
-    }
-  });
-  
 
 /***/ }),
 
@@ -50224,7 +50187,7 @@ if (document.getElementById('confirmareliminar')) {
 }
 
 if (document.getElementById('api_search_autocomplete')) {
-  __webpack_require__(/*! ./admin/api_search_autocomplete */ "./resources/js/admin/api_search_autocomplete.js");
+  __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module './admin/api_search_autocomplete'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 }
 
 /***/ }),
