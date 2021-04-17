@@ -24,4 +24,4 @@ if (document.getElementById('confirmareliminar')) {
 }
 if (document.getElementById('api_search_autocomplete')) {
     require('./admin/api_search_autocomplete');
-}
+} 

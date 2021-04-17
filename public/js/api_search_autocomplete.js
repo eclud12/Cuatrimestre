@@ -1,30 +1,42 @@
+
+
 const api_search_autocomplete = new Vue({
     el: '#api_search_autocomplete',
     data: {
-        palabraabuscar: '',
+        palabra_a_buscar: '',
         resultados: []
 
-    },    
+    },
     methods: {
-        autoComplete() { 
+        autoComplete() {
 
-           this.resultados = [];
-           if (this.palabraabuscar.length> 2) {
+            this.resultados = [];
 
-             axios.get('/api/autocomplete',
-             {params:{palabraabuscar: this.palabraabuscar}})
-                .then(response => {
-                this.resultados = response.data;    
-                console.log(response.data);
-             });
+            if (this.palabra_a_buscar.length > 2) {
+                axios.get('/api/autocomplete',
+                    { params: { palabraabuscar: this.palabra_a_buscar } }
+                ).then(response => {
+                    this.resultados = response.data;
+                    console.log(response.data);
+                });
+            }
 
-           } 
+
+
+
+
+
+
+
+
 
         },
 
     },
-    mounted(){
-          console.log('datos cargados');
+    mounted() {
+
+
+        console.log('Datos cargados correctamente');
     }
 
-}); 
+});

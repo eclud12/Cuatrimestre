@@ -40,13 +40,14 @@
                     </li>
                 </ul>
 
+
                 <!-- SEARCH FORM -->
 
 
 
                 <form class="form-inline ml-3">
                     <div class="input-group input-group-sm">
-                        <input class="form-control form-control-navbar" type="search" placeholder="Buscar producto" aria-label="Search" name='nombre' v-model="palabraabuscar" v-on:keyup="autoComplete">
+                        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search" name="nombre" v-model="palabra_a_buscar" v-on:keyup="autoComplete">
                         <div class="input-group-append">
                             <button class="btn btn-navbar" type="submit">
                                 <i class="fas fa-search"></i>
@@ -153,23 +154,26 @@
             </nav>
             <!-- /.navbar -->
 
-            <div class="panel-footer" v-if="resultados.length">
-                <ul class="list-group" style="align-items:center;  justify-content:center;">
-                    <li class="list-group-item" v-for="resultado in resultados">
-                        <a href="#" class="dropdown-item" v-on:click.prevent="palabraabuscar=resultado.nombre">
-                            <span v-html="resultado.name_negrita">
 
-                            </span>
+            <div class="panel-footer" v-if="resultados.length">
+                <ul class="list-group" style="align-items:center; justify-content:center;">
+
+                    <li class="list-group-item" v-for="resultado in resultados">
+                        <a href="#" class="dropdown-item" v-on:click.prevent="palabra_a_buscar =resultado.nombre ">
+                            <span v-html="resultado.name_negrita"></span>
                         </a>
+
                     </li>
 
+
                 </ul>
+
 
             </div>
 
 
 
-        </div> <!-- /.div api_search_autocomplete -->
+        </div><!-- /.div api_search_autocomplete -->
 
 
         <!-- Main Sidebar Container -->
