@@ -23,18 +23,10 @@ const api_search_autocomplete = new Vue({
 
 
 
-
-
-
-
-
-
-
         },
 
     },
     mounted() {
-
 
         console.log('Datos cargados correctamente');
     }
