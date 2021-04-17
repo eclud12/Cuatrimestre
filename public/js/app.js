@@ -50186,6 +50186,10 @@ if (document.getElementById('confirmareliminar')) {
   __webpack_require__(/*! ./confirmareliminar */ "./resources/js/confirmareliminar.js");
 }
 
+if (document.getElementById('api_search_autocomplete')) {
+  __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module './admin/api_search_autocomplete'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+}
+
 /***/ }),
 
 /***/ "./resources/js/confirmareliminar.js":
