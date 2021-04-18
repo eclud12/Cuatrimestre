@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Gate;
+
+use App\User;
 use App\Product;
 use App\Category;
 use App\Image;
@@ -8,9 +11,13 @@ use App\Image;
 //para hacer las pruebas con las imagenes.
 Route::get('/prueba', function () {
 
+ 
+Gate::authorize('haveaccess','role.show');
+$user = User::find(1);
+ return $user;
 
-    $product = App\Product::with('images','category')->orderby('id','desc')->get();
-    return $product;
+    //$product = App\Product::with('images','category')->orderby('id','desc')->get();
+  //  return $product;
   //$product = App\Product::find(5);
 //  return $product->images;
 
@@ -67,6 +74,9 @@ return $prod;
 
 Auth::routes();
 
+Route::resource('/role', 'RoleController')->names('role');
+
+Route::resource('/user', 'UserController', ['except'=>['create','store']])->names('user');
 
 Route::get('/home', 'HomeController@index')->name('home');
 

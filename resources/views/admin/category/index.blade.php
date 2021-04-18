@@ -34,7 +34,9 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body table-responsive p-0" style="height: 300px;">
+                @can('haveaccess','category.create')
                 <a class=" m-2 float-right btn btn-primary" href="{{ route('admin.category.create') }}">Crear</a>
+                @endcan
                 <table class="table table-head-fixed">
                     <thead>
                         <tr>
@@ -59,16 +61,19 @@
                             <td> {{$categoria->created_at }} </td>
                             <td> {{$categoria->updated_at }} </td>
 
+                            @can('haveaccess','category.show')
                             <td><a class="btn btn-default" href="{{ route('admin.category.show',$categoria->slug) }}">Ver</a>
                             </td>
-
+                            @endcan
+                            @can('haveaccess','category.edit')
                             <td> <a class="btn btn-info" href="{{ route('admin.category.edit',$categoria->slug) }}">Editar</a>
                             </td>
-
+                            @endcan
+                            @can('haveaccess','category.destroy')
                             <td> <a class="btn btn-danger" href="{{ route('admin.category.index') }}" v-on:click.prevent="deseas_eliminar({{$categoria->id}})">
                                     Eliminar</a>
                             </td>
-
+                            @endcan
                         </tr>
                         @endforeach
 
