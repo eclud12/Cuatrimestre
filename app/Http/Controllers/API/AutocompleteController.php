@@ -33,4 +33,5 @@ class AutocompleteController extends Controller
 
         return  $resultados;
     }
+    
 }
